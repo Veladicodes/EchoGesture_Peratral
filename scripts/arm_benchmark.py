@@ -1,4 +1,4 @@
-"""Real-phone ARM64 model-only benchmark (CLAUDE.md 5.4 item 6 / 17). Dev tool: never imported by src/.
+"""Real-phone ARM64 model-only benchmark (project spec 5.4 item 6 / 17). Dev tool: never imported by src/.
 
     python scripts/arm_benchmark.py --adb "C:/Users/Adith/Downloads/platform-tools-latest-windows/platform-tools/adb.exe" \
         --benchmark-model path/to/android_aarch64_benchmark_model

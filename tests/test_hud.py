@@ -1,4 +1,4 @@
-"""HUD logic (CLAUDE.md 5.5 / 13): hands-down reset, 2/3 vote tiers, non-blocking TTS, net counter, rendering."""
+"""HUD logic (project spec 5.5 / 13): hands-down reset, 2/3 vote tiers, non-blocking TTS, net counter, rendering."""
 import threading
 import time
 from pathlib import Path

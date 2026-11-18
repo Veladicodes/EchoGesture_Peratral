@@ -1,4 +1,4 @@
-"""Latency smoke test on the random-weight export (CLAUDE.md Build Order step 6).
+"""Latency smoke test on the random-weight export (project spec Build Order step 6).
 
 Not the final benchmark (that is scripts/benchmark.py: 500 iterations, robustness, thermal).
 Every number is measured here, on this machine, and labelled with what it covers:

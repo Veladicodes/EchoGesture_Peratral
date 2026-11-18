@@ -1,6 +1,6 @@
 """DEV-TIME helper: download the two MediaPipe .task bundles into ./weights/.
 
-Allowed only because it lives in scripts/ (CLAUDE.md 2.4). src/ never imports this and never
+Allowed only because it lives in scripts/ (project spec 2.4). src/ never imports this and never
 downloads; src/interpolator.py raises FileNotFoundError if the bundles are absent.
 Official source: Google's public MediaPipe model storage. Prints SHA-256 so the files can be pinned.
 """

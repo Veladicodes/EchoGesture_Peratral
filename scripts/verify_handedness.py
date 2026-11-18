@@ -1,4 +1,4 @@
-"""Empirical handedness check on real archive clips (CLAUDE.md 5.1 warning).
+"""Empirical handedness check on real archive clips (project spec 5.1 warning).
 
 For every frame with exactly ONE detected hand, compare the hand wrist (hand landmark 0) with the two
 pose wrists (pose idx 15 = joint 51 "L-wrist", idx 16 = joint 52 "R-wrist"). The pose wrist that is

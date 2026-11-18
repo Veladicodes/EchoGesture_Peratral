@@ -1,4 +1,4 @@
-"""Tests for src/models.py (CLAUDE.md 5.3): export-safe StudentSTGCN + training-only teacher."""
+"""Tests for src/models.py (project spec 5.3): export-safe StudentSTGCN + training-only teacher."""
 import re
 from pathlib import Path
 

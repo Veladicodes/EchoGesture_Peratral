@@ -1,0 +1,69 @@
+﻿# docker run --rm --network none echogesture:airgapped pytest tests -q   (pytest.ini adds -q)
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+.........................                                                [100%]
+=============================== warnings summary ===============================
+tests/test_contract.py::test_exact_schema_and_types
+tests/test_quantization.py::test_fusion_preserves_outputs
+  /app/src/quantize.py:133: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+    torch.onnx.export(
+
+tests/test_contract.py::test_exact_schema_and_types
+tests/test_quantization.py::test_fusion_preserves_outputs
+  /usr/local/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:218: DeprecationWarning: The feature will be removed. Please remove usage of this function
+    setup_onnx_logging(verbose) as log_ctx,
+
+tests/test_models.py::test_student_traces_to_a_static_graph
+  /usr/local/lib/python3.11/site-packages/torch/jit/_trace.py:1006: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/test_models.py::test_student_traces_to_a_static_graph
+tests/test_models.py::test_student_traces_to_a_static_graph
+  /usr/local/lib/python3.11/site-packages/torch/jit/_trace.py:1145: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/test_quantization.py::test_qat_finetune_runs_and_keeps_export_shape
+tests/test_quantization.py::test_qat_epoch_hook_is_called_once_per_epoch
+  /app/src/quantize.py:101: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
+  For migrations of users: 
+  1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
+  2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) 
+  3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) 
+  see https://github.com/pytorch/ao/issues/2259 for more details
+    tq.prepare_qat(qm, inplace=True)
+
+tests/test_quantization.py::test_qat_finetune_runs_and_keeps_export_shape
+tests/test_quantization.py::test_qat_epoch_hook_is_called_once_per_epoch
+  /usr/local/lib/python3.11/site-packages/torch/ao/quantization/observer.py:534: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
+    super().__init__(
+
+tests/test_quantization.py::test_qat_finetune_runs_and_keeps_export_shape
+tests/test_quantization.py::test_qat_epoch_hook_is_called_once_per_epoch
+  /usr/local/lib/python3.11/site-packages/torch/ao/quantization/quantize.py:600: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
+  For migrations of users: 
+  1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
+  2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) 
+  3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) 
+  see https://github.com/pytorch/ao/issues/2259 for more details
+    convert(model, mapping=mapping, inplace=True, remove_qconfig=False)
+
+tests/test_quantization.py::test_qat_finetune_runs_and_keeps_export_shape
+tests/test_quantization.py::test_qat_epoch_hook_is_called_once_per_epoch
+  /usr/local/lib/python3.11/site-packages/torch/ao/quantization/quantize.py:601: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
+  For migrations of users: 
+  1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
+  2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) 
+  3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) 
+  see https://github.com/pytorch/ao/issues/2259 for more details
+    prepare(model, observer_non_leaf_module_list=set(mapping.values()), inplace=True)
+
+tests/test_quantization.py::test_tflite_export_and_gates
+  /usr/local/lib/python3.11/site-packages/tensorflow/lite/python/interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in
+      TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.
+      See the [migration guide](https://ai.google.dev/edge/litert/migration)
+      for details.
+      
+    warnings.warn(_INTERPRETER_DELETION_WARNING)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+169 passed, 16 warnings in 34.83s

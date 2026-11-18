@@ -1,4 +1,4 @@
-"""Export gates (CLAUDE.md 5.4) on a random-weight student: <0.5 MB, cosine>0.99, drift<1e-2.
+"""Export gates (project spec 5.4) on a random-weight student: <0.5 MB, cosine>0.99, drift<1e-2.
 
 Calibration/test inputs here are SYNTHETIC skeleton sequences (no real data exists yet), so these
 gates prove the export machinery, not trained-model quality. Re-run with real val data later.

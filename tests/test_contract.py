@@ -1,4 +1,4 @@
-"""predict() contract (CLAUDE.md 4.1) + streaming-latency semantics (CLAUDE.md 3.1).
+"""predict() contract (project spec 4.1) + streaming-latency semantics (project spec 3.1).
 
 Uses a random-weight INT8 student exported into tmp_path and a fake landmark extractor, so it runs
 with no trained model. A real-MediaPipe integration test runs only if the .task bundles are present.

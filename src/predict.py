@@ -1,4 +1,4 @@
-"""Official entry point: predict(video_path) -> dict  (CLAUDE.md 4.1).
+"""Official entry point: predict(video_path) -> dict  (project spec 4.1).
 
     {"clip_id", "prediction", "top5", "confidence", "latency_ms"}   exactly these keys.
 

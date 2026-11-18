@@ -1,4 +1,4 @@
-"""Fusion, QAT fine-tune and INT8 export (ONNX + TFLite) for StudentSTGCN (CLAUDE.md 5.4).
+"""Fusion, QAT fine-tune and INT8 export (ONNX + TFLite) for StudentSTGCN (project spec 5.4).
 
     python -m src.quantize --random-weights            # prove the export path before any training
     python -m src.quantize --checkpoint weights/student_best.pt --calib-npy data/calib.npy
@@ -277,7 +277,9 @@ def _build_tf_module(fused: StudentSTGCN, num_channels: int):
                 a = tf.transpose(tf.matmul(tf.transpose(x, [0, 1, 3, 2]), b["A"]), [0, 1, 3, 2])
                 y = tf.nn.relu(tf.nn.conv2d(a, b["g"][0], 1, "VALID") + b["g"][1])
                 y = tf.pad(y, [[0, 0], [4, 4], [0, 0], [0, 0]])
-                y = tf.nn.depthwise_conv2d(y, b["dw"][0], [1, b["stride"], 1, 1], "VALID") + b["dw"][1]
+                # stride-1 depthwise then subsample: identical to a strided VALID conv, but the Linux TF CPU kernel
+                # rejects unequal row/column strides.
+                y = tf.nn.depthwise_conv2d(y, b["dw"][0], [1, 1, 1, 1], "VALID")[:, :: b["stride"], :, :] + b["dw"][1]
                 y = tf.nn.conv2d(y, b["pw"][0], 1, "VALID") + b["pw"][1]
                 r = x if b["res"] is None else tf.nn.conv2d(x, b["res"][0], [1, b["stride"], 1, 1], "VALID") + b["res"][1]
                 x = tf.nn.relu(y + r)
@@ -392,7 +394,7 @@ def main(argv: list[str] | None = None) -> dict:
             report["tflite"] = export_tflite_int8(
                 fused, out / cfg["paths"]["student_tflite"].split("/")[-1], calib, nc, test_x
             )
-        except ImportError as e:  # CLAUDE.md 2.5: say so, never skip silently
+        except ImportError as e:  # project spec 2.5: say so, never skip silently
             report["tflite"] = f"NOT EXPORTED on this machine: {e}. Run in Docker/WSL/GCP Linux."
     (repo_path(cfg["paths"]["outputs"]) / "export_report.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))

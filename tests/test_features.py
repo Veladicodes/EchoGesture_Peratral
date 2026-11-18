@@ -1,4 +1,4 @@
-"""Contract tests for src/features.py (CLAUDE.md 5.2). Run in both 7- and 6-channel modes."""
+"""Contract tests for src/features.py (project spec 5.2). Run in both 7- and 6-channel modes."""
 import numpy as np
 import pytest
 

@@ -1,4 +1,4 @@
-"""MAG-KD loss, no-distill fallback, temporal Mixup/CutMix, dataset, promotion rule (CLAUDE.md 5.3)."""
+"""MAG-KD loss, no-distill fallback, temporal Mixup/CutMix, dataset, promotion rule (project spec 5.3)."""
 from datetime import datetime, timezone
 
 import numpy as np

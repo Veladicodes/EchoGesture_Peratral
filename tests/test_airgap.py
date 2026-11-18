@@ -1,4 +1,4 @@
-"""Air-gap enforcement (CLAUDE.md 2.4): no network imports in src/, no socket use at runtime."""
+"""Air-gap enforcement (project spec 2.4): no network imports in src/, no socket use at runtime."""
 import ast
 import re
 import socket
@@ -16,7 +16,7 @@ BANNED = (
     "torchvision.models",  # pretrained downloads
 )
 
-# Explicit whitelist: every entry needs a reason (CLAUDE.md 2.4).
+# Explicit whitelist: every entry needs a reason (project spec 2.4).
 WHITELIST = {
     "PIL": "Pillow renders HUD text locally; makes no network calls",
     "psutil": "read-only local network byte counter for the HUD; makes no network calls",

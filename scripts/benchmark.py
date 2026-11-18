@@ -1,4 +1,4 @@
-"""Benchmark + submission artifacts (CLAUDE.md 3, 3.1, 4.2). Every number is measured here.
+"""Benchmark + submission artifacts (project spec 3, 3.1, 4.2). Every number is measured here.
 
     python scripts/benchmark.py --manifest data/test_manifest.csv --output_dir outputs [--quick]
 
@@ -6,7 +6,7 @@ Writes outputs/predictions.jsonl (one predict() dict per line, manifest order), 
 outputs/predictions.json, outputs/results.csv (exactly 6 rows), outputs/benchmark_log.json and
 outputs/latency_smoke.json (per-step streaming latency + full-clip batch throughput).
 
-Metric definitions (also CLAUDE.md 3.1):
+Metric definitions (also project spec 3.1):
   top1_accuracy             % of test clips with prediction == ground-truth gloss (predict() on each clip)
   latency_p95               p95 of 500 consecutive STREAMING steps after 20 warm-up steps, k=3: every step runs
                             features + INT8 inference + post-processing; every 3rd step also runs MediaPipe

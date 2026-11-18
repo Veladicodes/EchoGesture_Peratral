@@ -1,4 +1,4 @@
-"""View-invariant 53-joint features (CLAUDE.md 5.2).
+"""View-invariant 53-joint features (project spec 5.2).
 
 Input : raw joints (T, 53, 3)  [x, y, z], missing hand/body == all zeros.
 Output: float32 tensor (NUM_CHANNELS, 64, 53), never NaN/Inf.

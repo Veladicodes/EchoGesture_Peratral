@@ -1,4 +1,4 @@
-"""Air-gapped MediaPipe Tasks landmark extractor with k-frame skipping + linear interpolation (CLAUDE.md 5.1).
+"""Air-gapped MediaPipe Tasks landmark extractor with k-frame skipping + linear interpolation (project spec 5.1).
 
 * HandLandmarker + PoseLandmarker, RunningMode.VIDEO, loaded ONLY from local ./weights/*.task bundles.
   A missing bundle raises FileNotFoundError; there is never a download fallback.

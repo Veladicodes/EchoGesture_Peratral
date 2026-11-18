@@ -1,4 +1,4 @@
-"""Student (export-safe, INT8-bound) and Teacher (training-only) skeleton GCNs (CLAUDE.md 5.3).
+"""Student (export-safe, INT8-bound) and Teacher (training-only) skeleton GCNs (project spec 5.3).
 
 Both consume (N, C, 64, 53) feature tensors from features.build_features and return (N, num_classes)
 logits. The graph comes from the single PARENTS constant in features.py.

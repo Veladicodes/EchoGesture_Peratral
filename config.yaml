@@ -1,5 +1,5 @@
 # EchoGesture (Peratral) - single source of truth for tunables.
-# Anything marked "engineering default" is OUR choice, not a Samsung rule (see CLAUDE.md 5.3).
+# Anything marked "engineering default" is OUR choice, not a Samsung rule (see project spec 5.3).
 
 COLLEGE_NAME: VITVellore
 TEAM_NAME: Peratral
@@ -15,7 +15,7 @@ ort_threads: 1        # onnxruntime intra-op threads, explicit so latency number
 
 # Distillation / training safety net (engineering defaults)
 teacher_min_gain: 0.02
-training_cutoff: "2026-11-16T23:59:00+05:30"   # "Day 3 midnight cutoff" (CLAUDE.md 5.3); IST assumed
+training_cutoff: "2026-11-16T23:59:00+05:30"   # "Day 3 midnight cutoff" (project spec 5.3); IST assumed
 code_freeze: "2026-11-18T12:00:00+05:30"
 
 # Quantization (engineering defaults)
@@ -24,7 +24,7 @@ onnx_calib_samples: 600   # ONNX INT8 calibration clips (scripts/requant_onnx.py
 qat_epochs: 15
 qat_lr: 0.0001
 
-# Power proxy (CLAUDE.md 3.1): mW = process CPU utilisation (share of all logical CPUs) x TDP. TDP is the vendor-listed
+# Power proxy (project spec 3.1): mW = process CPU utilisation (share of all logical CPUs) x TDP. TDP is the vendor-listed
 # default for this dev laptop (AMD Ryzen 7 5800H, 45 W cTDP default) -> an ASSUMED constant, not a measurement.
 cpu_tdp_w: 45.0
 

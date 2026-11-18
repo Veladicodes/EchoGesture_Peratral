@@ -1,4 +1,4 @@
-"""Tests for src/interpolator.py (CLAUDE.md 5.1): k=3 interpolation, zero-hand guard, handedness, streaming.
+"""Tests for src/interpolator.py (project spec 5.1): k=3 interpolation, zero-hand guard, handedness, streaming.
 
 MediaPipe itself is replaced by duck-typed fakes: the .task bundles are not in weights/ yet, so the
 real-detector path is covered separately (test_missing_bundle_raises, and scripts/ once bundles exist).

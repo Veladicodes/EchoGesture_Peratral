@@ -1,4 +1,4 @@
-"""MAG-KD (correctness-masked knowledge distillation) + the no-distill fallback (CLAUDE.md 5.3).
+"""MAG-KD (correctness-masked knowledge distillation) + the no-distill fallback (project spec 5.3).
 
     mask      = teacher_logits.argmax(1) == y_true             # distil only where the teacher is right
     masked_kl = (KL(softmax(t/tau) || softmax(s/tau)) * mask).sum() / mask.sum().clamp(min=1)

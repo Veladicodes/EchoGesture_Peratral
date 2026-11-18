@@ -1,4 +1,4 @@
-"""Automatic checks for mandatory deliverables A-C (CLAUDE.md 8). D (demo video) and E (deck) are manual.
+"""Automatic checks for mandatory deliverables A-C (project spec 8). D (demo video) and E (deck) are manual.
 
     python scripts/verify_submission.py [--manifest data/test_manifest.csv]
 

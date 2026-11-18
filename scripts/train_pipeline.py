@@ -272,7 +272,7 @@ def main(argv: list[str] | None = None) -> dict:
             tfl = Q.export_tflite_int8(export_model, out / "student_int8.tflite", calib, nc, test_x=val_x[:64],
                                    val_x=val_x, val_y=np.array(va.labels))
             summary["export"]["tflite"] = tfl
-        except Exception as e:  # reported, never hidden (CLAUDE.md 2.5)
+        except Exception as e:  # reported, never hidden (project spec 2.5)
             summary["export"]["tflite"] = f"NOT EXPORTED: {type(e).__name__}: {e}"
     log(f"export: INT8 ONNX {summary['export']['onnx_int8_mb']:.4f} MB, val top1 FP32={fp32_final['top1']:.4f} "
         f"INT8={int8_val['top1']:.4f} (drop {100 * drop:+.2f} pts)")

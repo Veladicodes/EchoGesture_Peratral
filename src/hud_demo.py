@@ -1,4 +1,4 @@
-"""Live XR HUD (CLAUDE.md 5.5, 13, 14): sliding window, 2/3 vote, hands-down reset, offline TTS, live telemetry.
+"""Live XR HUD (project spec 5.5, 13, 14): sliding window, 2/3 vote, hands-down reset, offline TTS, live telemetry.
 
     python src/hud_demo.py                          # webcam 0 (mirrored selfie view = the model's expected handedness)
     python src/hud_demo.py --source clip.mp4        # a video file or a frame directory (not mirrored)

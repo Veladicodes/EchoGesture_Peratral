@@ -105,3 +105,14 @@ label smoothing 0.1. Robustness perturbations (15% joint occlusion, +-15 deg til
 ## Air-gap
 `src/` imports no network modules (enforced by `tests/test_airgap.py`); all weights load from `./weights/`. The Docker image has
 **not been built or run** on the development machine (no Docker installed); the Wireshark / airplane-mode proof is still to do.
+
+## Air-gapped container check (measured)
+
+```bash
+docker build -t echogesture:airgapped .            # needs network once, to download wheels
+docker run --rm --network none echogesture:airgapped pytest tests -q
+```
+
+Result on the build machine (Docker Desktop, Linux container, CPU-only PyTorch, image about 5.3 GB): **169 passed** with `--network none`
+(exit code 0). Full output: `outputs/docker_verify.txt`. The container runs the unit and contract tests; the 258-clip benchmark needs the
+frame archive, which is not shipped in the image.

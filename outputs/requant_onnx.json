@@ -1,0 +1,13 @@
+{
+  "method": "percentile",
+  "percentile": 99.999,
+  "calib_clips": 600,
+  "excluded_nodes": [],
+  "val_top1_fp32": 0.599406528189911,
+  "val_top1_int8_onnx": 0.5964391691394659,
+  "drop_pts": 0.29673590504450953,
+  "gate_drop_le_1pt": true,
+  "size_mb": 0.128142,
+  "size_lt_0_5_mb": true,
+  "note": "hyper-parameters were chosen on the validation split; treat the pass as +-1 pt noise"
+}

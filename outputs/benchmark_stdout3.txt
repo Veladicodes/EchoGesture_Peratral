@@ -1,0 +1,222 @@
+[1/5] predictions on the test split ...
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1794673504.263760   13232 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1794673507.645782   13232 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241D485F1F0, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241D4860750, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241D4862D90, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241D4865BB0, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+WARNING: Logging before InitGoogle() is written to STDERR
+W0000 00:00:1794673510.790491   22332 inference_runner_litert.cc:1433] Input tensor memory is not aligned according to LiteRt's memory alignment requirements. Reallocating memory and copying data.
+W0000 00:00:1794673510.807354   28500 landmark_projection_calculator.cc:81] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+      top1=0.6085 top5=0.8450
+[2/5] robustness ...
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241D4869C30, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241DAF47350, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241E16E67D0, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241E2159B40, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=00000241D4869C30, name=CpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=00000241DAF47350, name=CpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=00000241E16E67D0, name=CpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=00000241E2159B40, name=CpuAccelerator
+[3/5] streaming latency ...
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241E52B9120, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241A3A63790, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241D9B8F950, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+WARNING: [model_load.cc:402] Sparsity tensors may not yet be fully supported.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=00000241D9B8DD60, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+INFO: [compiled_model.cc:1022] Flatbuffer model initialized directly from incoming litert model.
+[4/5] model size ...
+[5/5] thermal loop 10.0 min ...
+{
+  "accuracy": {
+    "n_clips": 258,
+    "top1": 0.6085271317829457,
+    "top5": 0.8449612403100775,
+    "last_step_latency_ms_mean": 43.95370155075644,
+    "total_clip_ms_mean": 751.1517965123589,
+    "total_clip_ms_p95": 928.4459799957402,
+    "clip_fps_mean": 21.60699108195944,
+    "frames_per_clip": 16
+  },
+  "latency": {
+    "steps": 500,
+    "warmup": 20,
+    "frame_skip": 3,
+    "step_ms_p50": 2.7574499981710687,
+    "step_ms_p95": 46.47927499827346,
+    "step_ms_max": 54.48199999227654,
+    "keyframe_steps": 167,
+    "keyframe_step_ms_p95": 49.04100000421749,
+    "interp_step_ms_p95": 4.027580004185434,
+    "waterfall_p95_ms": {
+      "landmarks_hand_pose": 45.45121000119252,
+      "features": 1.0264200107485522,
+      "int8_model_only": 2.55895500886254,
+      "postprocess": 0.1645549964450765
+    },
+    "stream": "real test-split archive frames x3 repeat; decode excluded"
+  },
+  "model_size_mb": {
+    "onnx": 0.128141,
+    "tflite": 0.129
+  }
+}
+metric,target,measured,unit,device,runtime,pass
+top1_accuracy,70,60.85,%,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU,False
+latency_p95,50,46.48,ms,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy) | per-step streaming, k=3",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU,True
+model_size,20,0.1290,MB,file size (larger of onnx/tflite),INT8 ONNX + TFLite,True
+accuracy_drop_robustness,5,25.19,pts,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU,False
+avg_power,500,not measured,mW,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy) | no power meter",n/a,False
+thermal_drift_10min,20,-16.62,%,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU | continuous streaming loop,True
+

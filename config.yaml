@@ -1,0 +1,48 @@
+# EchoGesture (Peratral) - single source of truth for tunables.
+# Anything marked "engineering default" is OUR choice, not a Samsung rule (see CLAUDE.md 5.3).
+
+COLLEGE_NAME: VITVellore
+TEAM_NAME: Peratral
+
+seed: 42
+
+# Input channels per joint. 7 = x,y,z,vx,vy,cos_bone,sin_bone. 6 = z-ablation (drops z_norm, channel 2).
+num_channels: 7
+
+frames: 64            # temporal window T
+frame_skip: 3         # landmark inference stride k (engineering default; raise to 4 only if p95 > 42 ms)
+ort_threads: 1        # onnxruntime intra-op threads, explicit so latency numbers are reproducible
+
+# Distillation / training safety net (engineering defaults)
+teacher_min_gain: 0.02
+training_cutoff: "2026-11-16T23:59:00+05:30"   # "Day 3 midnight cutoff" (CLAUDE.md 5.3); IST assumed
+code_freeze: "2026-11-18T12:00:00+05:30"
+
+# Quantization (engineering defaults)
+calib_samples: 200
+onnx_calib_samples: 600   # ONNX INT8 calibration clips (scripts/requant_onnx.py); 200 left a 1.48-pt val drop, 600 gives 0.30
+qat_epochs: 15
+qat_lr: 0.0001
+
+# Power proxy (CLAUDE.md 3.1): mW = process CPU utilisation (share of all logical CPUs) x TDP. TDP is the vendor-listed
+# default for this dev laptop (AMD Ryzen 7 5800H, 45 W cTDP default) -> an ASSUMED constant, not a measurement.
+cpu_tdp_w: 45.0
+
+# MediaPipe input preprocessing (src/interpolator.preprocess_frame). 0 = off. MEASURED on the test split
+# (outputs/preproc_ablation.json): resize to 224 cost 4.3 pts clean top-1; adaptive CLAHE cut end-to-end low-light top-1
+# from 42.6% to 26.7%. Both are therefore OFF by default (opt-in only).
+mp_max_side: 0
+clahe_luma: 0
+
+# HUD
+hud_warn_ms: 50.0
+
+# Paths (relative to repo root)
+paths:
+  vocab: data/vocab.json
+  weights: weights
+  outputs: outputs
+  hand_task: weights/hand_landmarker.task
+  pose_task: weights/pose_landmarker_lite.task
+  student_onnx: weights/student_int8.onnx
+  student_tflite: weights/student_int8.tflite

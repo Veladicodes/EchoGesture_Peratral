@@ -1,0 +1,107 @@
+{
+  "vocab_size": 100,
+  "test_clips": 258,
+  "device": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",
+  "quick": false,
+  "proxy_vocab_note": "WLASL-100 proxy vocabulary, not Samsung's official list",
+  "accuracy": {
+    "n_clips": 258,
+    "top1": 0.6162790697674418,
+    "top5": 0.8488372093023255,
+    "last_step_latency_ms_mean": 43.95160775046431,
+    "total_clip_ms_mean": 740.0256034887898,
+    "total_clip_ms_p95": 893.2229849990107,
+    "clip_fps_mean": 21.980484095564975,
+    "frames_per_clip": 16
+  },
+  "robustness": {
+    "top1": {
+      "clean": 0.6162790697674418,
+      "hand_drop_15pct_frames": 0.5852713178294574,
+      "tilt_pm15deg": 0.5930232558139535,
+      "coord_noise_sigma0.015": 0.46511627906976744,
+      "model_combined": 0.44573643410852715,
+      "low_light": 0.4263565891472868,
+      "all_combined": 0.35658914728682173,
+      "diag_single_joint_dropout_15pct": 0.12790697674418605,
+      "diag_all_combined_single_joint": 0.06589147286821706
+    },
+    "drop_pts": {
+      "hand_drop_15pct_frames": 3.100775193798444,
+      "tilt_pm15deg": 2.3255813953488302,
+      "coord_noise_sigma0.015": 15.11627906976744,
+      "model_combined": 17.05426356589147,
+      "low_light": 18.992248062015506,
+      "all_combined": 25.968992248062012,
+      "diag_single_joint_dropout_15pct": 48.837209302325576,
+      "diag_all_combined_single_joint": 55.03875968992248
+    },
+    "primary": "all_combined",
+    "levels": {
+      "model_level (clean landmarks; isolates OUR model)": [
+        "hand_drop_15pct_frames",
+        "tilt_pm15deg",
+        "coord_noise_sigma0.015",
+        "model_combined"
+      ],
+      "end_to_end (sensor + model; darkened RGB re-extracted by MediaPipe)": [
+        "low_light",
+        "all_combined"
+      ],
+      "diagnostic_only": [
+        "diag_single_joint_dropout_15pct",
+        "diag_all_combined_single_joint"
+      ]
+    },
+    "model_level_drop_pts": 17.05426356589147,
+    "end_to_end_drop_pts": 25.968992248062012,
+    "note": "The low-light drop is dominated by upstream RGB MediaPipe losing/mislocating landmarks in dark frames (measured as the gap between model_level and end_to_end), not by the INT8 GCN, which only sees landmarks.",
+    "methodology": "PRIMARY all_combined = low-light frames (gamma 2.2, x0.5, noise sigma 8, landmarks re-extracted) + tilt uniform +-15deg + whole-hand drop on 15% of frames per hand. diag_* = raw single-joint dropout (15% of (frame,joint)), kept for transparency only; MediaPipe loses a hand at a time, not single joints. Seeds [42,..].",
+    "clean_matches_predict": true
+  },
+  "latency": {
+    "steps": 500,
+    "warmup": 20,
+    "frame_skip": 3,
+    "step_ms_p50": 2.296599996043369,
+    "step_ms_p95": 40.94407500961097,
+    "step_ms_max": 49.54189999261871,
+    "keyframe_steps": 167,
+    "keyframe_step_ms_p95": 44.602599990321316,
+    "interp_step_ms_p95": 2.5414400035515428,
+    "waterfall_p95_ms": {
+      "landmarks_hand_pose": 42.97035999043146,
+      "features": 0.828404998173937,
+      "int8_model_only": 2.548150012444239,
+      "postprocess": 0.07763000321574505
+    },
+    "stream": "real test-split archive frames x3 repeat; decode excluded"
+  },
+  "latency_by_k": {
+    "k=3": {
+      "step_ms_p95": 40.94407500961097,
+      "keyframe_step_ms_p95": 44.602599990321316
+    },
+    "k=4": {
+      "step_ms_p95": 40.6693150041974,
+      "keyframe_step_ms_p95": 48.33908000146039,
+      "keyframe_steps": 125
+    }
+  },
+  "model_size_mb": {
+    "onnx": 0.128142,
+    "tflite": 0.129
+  },
+  "thermal": {
+    "process_cpu_util_frac": 0.06437372699944403,
+    "cpu_tdp_w": 45.0,
+    "proxy_power_mw": 2896.8177149749813,
+    "minutes": 10.0,
+    "steps": 48187,
+    "p95_minute_1_ms": 39.90224999142811,
+    "p95_minute_last_ms": 39.572994990157895,
+    "drift_pct": -0.8251539733747935,
+    "steps_minute_1": 4771,
+    "steps_minute_last": 4932
+  }
+}

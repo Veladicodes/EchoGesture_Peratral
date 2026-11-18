@@ -1,0 +1,31 @@
+{
+  "weights": "random (untrained)",
+  "calibration_source": "SYNTHETIC (no real data yet)",
+  "calib_samples": 200,
+  "num_channels": 7,
+  "num_classes": 100,
+  "student_params": 73602,
+  "onnx_int8_mb": 0.128139,
+  "onnx": {
+    "cosine_mean": 0.9999875426292419,
+    "cosine_min": 0.9999828934669495,
+    "cosine_centered_mean": 0.9999874830245972,
+    "max_logit_drift": 0.0010384321212768555,
+    "max_prob_drift": 1.0511837899684906e-05,
+    "top1_agreement": 1.0,
+    "n": 64
+  },
+  "tflite": {
+    "cosine_mean": 0.9999924302101135,
+    "cosine_min": 0.9999909400939941,
+    "cosine_centered_mean": 0.9999923706054688,
+    "max_logit_drift": 0.00047449395060539246,
+    "max_prob_drift": 5.2675604820251465e-06,
+    "top1_agreement": 1.0,
+    "n": 64,
+    "size_mb": 0.125088,
+    "tf_float_vs_torch_max_abs": 5.960464477539063e-08,
+    "input_layout": "NHWC (1,64,53,C)",
+    "input_dtype": "float32"
+  }
+}

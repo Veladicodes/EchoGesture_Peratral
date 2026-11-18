@@ -1,0 +1,16 @@
+# Pinned to the exact versions installed and tested on Windows 11 / Python 3.11.9 (2026-11-14).
+# Create the env with:  python -m venv .venv --system-site-packages  (or a clean venv) then pip install -r requirements.txt
+numpy==2.4.6
+PyYAML==6.0.3
+torch==2.11.0
+onnx==1.23.2
+onnxruntime==1.27.0
+tensorflow==2.21.0          # TFLite INT8 conversion + x86 interpreter check (works natively on Windows)
+mediapipe==1.2.3
+opencv-contrib-python==5.0.0.93   # pulled in by mediapipe; this is the cv2 that actually imports (cv2.__version__ == 5.0.0)
+protobuf==7.36.2
+flatbuffers==25.12.19
+pillow==12.1.0              # per `pip show pillow`; NOTE: PIL.__version__ reports 12.3.0 on this machine, re-check when the HUD is built
+psutil==7.2.2               # HUD read-only local network byte counter (whitelisted in tests/test_airgap.py)
+pyttsx3==2.99               # offline TTS (SAPI5 on Windows)
+pytest==9.1.1

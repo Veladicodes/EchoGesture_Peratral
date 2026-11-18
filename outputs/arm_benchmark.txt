@@ -1,0 +1,69 @@
+EchoGesture ARM64 model-only benchmark | 2026-11-15T12:28:51+05:30
+SCOPE: model-only latency (INT8 TFLite + XNNPACK). Excludes MediaPipe landmarks and video decode. Does NOT replace the laptop end-to-end latency_p95.
+model: student_int8.tflite (0.1290 MB)
+device identity (read from the device, not assumed):
+  ro.product.manufacturer = motorola
+  ro.product.model = motorola edge 60 pro
+  ro.soc.manufacturer = Mediatek
+  ro.soc.model = MT6897
+  ro.board.platform = mt6897
+  ro.hardware = mt6897
+  ro.product.cpu.abi = arm64-v8a
+  ro.build.version.release = 17
+battery level = 37% | battery temp = 29.9 C
+
+===== run 1 | benchmark_model --graph=/data/local/tmp/student_int8.tflite --use_xnnpack=true --num_runs=500 --warmup_runs=20 =====
+INFO: STARTING!
+INFO: Log parameter values verbosely: [0]
+INFO: Min num runs: [500]
+INFO: Min warmup runs: [20]
+INFO: Graph: [/data/local/tmp/student_int8.tflite]
+INFO: Signature to run: []
+INFO: Use xnnpack: [1]
+INFO: Loaded model /data/local/tmp/student_int8.tflite
+INFO: XNNPACK delegate created.
+INFO: Explicitly applied XNNPACK delegate, and the model graph will be completely executed by the delegate.
+INFO: The input model file size (MB): 0.129
+INFO: Initialized session in 6.61ms.
+INFO: Running benchmark for at least 20 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+INFO: count=161 first=3427 curr=3090 min=3050 max=3427 avg=3098.22 std=37 p5=3054 median=3090 p95=3142
+
+INFO: Running benchmark for at least 500 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+INFO: count=500 first=3176 curr=3102 min=3047 max=3229 avg=3096.89 std=27 p5=3056 median=3091 p95=3147
+
+INFO: Inference timings in us: Init: 6610, First inference: 3427, Warmup (avg): 3098.22, Inference (avg): 3096.89
+INFO: Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+INFO: Memory footprint delta from the start of the tool (MB): init=4.88281 overall=4.89844
+INFO: Initialized TensorFlow Lite runtime.
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: Replacing 54 out of 54 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+parsed: {'count': 500, 'min_us': 3047, 'max_us': 3229, 'avg_us': 3096.89, 'std_us': 27, 'p5_us': 3056, 'median_us': 3091, 'p95_us': 3147}
+
+===== run 2 | benchmark_model --graph=/data/local/tmp/student_int8.tflite --use_xnnpack=true --num_runs=500 --warmup_runs=20 =====
+INFO: STARTING!
+INFO: Log parameter values verbosely: [0]
+INFO: Min num runs: [500]
+INFO: Min warmup runs: [20]
+INFO: Graph: [/data/local/tmp/student_int8.tflite]
+INFO: Signature to run: []
+INFO: Use xnnpack: [1]
+INFO: Loaded model /data/local/tmp/student_int8.tflite
+INFO: XNNPACK delegate created.
+INFO: Explicitly applied XNNPACK delegate, and the model graph will be completely executed by the delegate.
+INFO: The input model file size (MB): 0.129
+INFO: Initialized session in 3.959ms.
+INFO: Running benchmark for at least 20 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+INFO: count=160 first=3184 curr=3096 min=3064 max=4211 avg=3118.44 std=91 p5=3068 median=3106 p95=3178
+
+INFO: Running benchmark for at least 500 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+INFO: count=500 first=3142 curr=2501 min=2487 max=3243 avg=2785.13 std=268 p5=2524 median=2597 p95=3142
+
+INFO: Inference timings in us: Init: 3959, First inference: 3184, Warmup (avg): 3118.44, Inference (avg): 2785.13
+INFO: Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+INFO: Memory footprint delta from the start of the tool (MB): init=4.8125 overall=4.82422
+INFO: Initialized TensorFlow Lite runtime.
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: Replacing 54 out of 54 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+parsed: {'count': 500, 'min_us': 2487, 'max_us': 3243, 'avg_us': 2785.13, 'std_us': 268, 'p5_us': 2524, 'median_us': 2597, 'p95_us': 3142}
+
+SUMMARY: model-only avg latency per run (ms) = [3.097, 2.785] | spread = 0.312 ms | mean = 2.941 ms

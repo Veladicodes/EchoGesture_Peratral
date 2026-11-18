@@ -1,0 +1,30 @@
+﻿create failed in us-central1-a (1x NVIDIA L4): gcloud compute instances create echogesture-train-1114-102715 failed (1): WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: h
+create failed in us-east1-b (1x NVIDIA L4): gcloud compute instances create echogesture-train-1114-102715 failed (1): WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: h
+create failed in us-west1-b (1x NVIDIA L4): gcloud compute instances create echogesture-train-1114-102715 failed (1): WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: h
+create failed in us-central1-a (1x NVIDIA T4): gcloud compute instances create echogesture-train-1114-102715 failed (1): ntral1-a zone. Alternatively, you can try
+      your request again with a different VM hardware configuration or at a later
+  
+create failed in us-east1-c (1x NVIDIA T4): gcloud compute instances create echogesture-train-1114-102715 failed (1): the us-east1-c zone. Alternatively, you can try your
+      request again with a different VM hardware configuration or at a la
+BILLING GUARD OK: echogesture-train-1114-102715 deleted and absent from instances list. Other VMs (not ours, untouched): ['agenttraffic-lab', 'pqc-vm']
+.\.venv\Scripts\python.exe : Traceback (most recent call last):
+At line:1 char:338
++ ... e_Peratral; .\.venv\Scripts\python.exe -u scripts\gcp_orchestrate.py  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "F:\Samsung\EchoGesture_Peratral\scripts\gcp_orchestrate.py", line 225, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "F:\Samsung\EchoGesture_Peratral\scripts\gcp_orchestrate.py", line 218, in main
+    info = orchestrate(dry_gcloud if a.dry_run else real_gcloud, a.profile, dry_pull=a.dry_run, poll_s=a.poll_s,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Samsung\EchoGesture_Peratral\scripts\gcp_orchestrate.py", line 150, in orchestrate
+    run(["compute", "scp", str(bundle), f"{name}:~/bundle.tgz", z, "--quiet", "--strict-host-key-checking=no"])
+  File "F:\Samsung\EchoGesture_Peratral\scripts\gcp_orchestrate.py", line 53, in real_gcloud
+    raise GcloudError(f"gcloud {' '.join(args[:4])} failed ({r.returncode}): {r.stderr.strip()[-600:]}")
+GcloudError: gcloud compute scp F:\Samsung\EchoGesture_Peratral\gcp_bundle.tgz 
+echogesture-train-1114-102715:~/bundle.tgz failed (1): pscp: unable to open ~/bundle.tgz: no such file or directory
+ERROR: (gcloud.compute.scp) [C:\Users\Adith\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin\sdk\pscp.exe] exited 
+with return code [1].

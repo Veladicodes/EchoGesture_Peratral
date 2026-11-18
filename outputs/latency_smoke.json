@@ -1,0 +1,28 @@
+{
+  "label": "per-step streaming latency + full-clip batch throughput (real archive frames)",
+  "device": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",
+  "streaming": {
+    "steps": 500,
+    "warmup": 20,
+    "frame_skip": 3,
+    "step_ms_p50": 2.296599996043369,
+    "step_ms_p95": 40.94407500961097,
+    "step_ms_max": 49.54189999261871,
+    "keyframe_steps": 167,
+    "keyframe_step_ms_p95": 44.602599990321316,
+    "interp_step_ms_p95": 2.5414400035515428,
+    "waterfall_p95_ms": {
+      "landmarks_hand_pose": 42.97035999043146,
+      "features": 0.828404998173937,
+      "int8_model_only": 2.548150012444239,
+      "postprocess": 0.07763000321574505
+    },
+    "stream": "real test-split archive frames x3 repeat; decode excluded"
+  },
+  "full_clip_batch": {
+    "total_clip_ms_mean": 740.0256034887898,
+    "total_clip_ms_p95": 893.2229849990107,
+    "clip_fps_mean": 21.980484095564975,
+    "frames_per_clip": 16
+  }
+}

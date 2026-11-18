@@ -1,0 +1,135 @@
+{
+  "device": "cuda",
+  "num_classes": 100,
+  "train_clips": 1440,
+  "val_clips": 337,
+  "args": {
+    "data_dir": "data",
+    "cache": "data/cache",
+    "out": "weights",
+    "outputs": "outputs",
+    "device": "cpu",
+    "num_channels": null,
+    "ablation_epochs": 40,
+    "teacher_epochs": 80,
+    "student_epochs": 120,
+    "qat_epochs": 15,
+    "student_lr": 0.002,
+    "teacher_lr": 0.001,
+    "teacher_min_gain": 0.02,
+    "calib_samples": 200,
+    "cutoff": "2026-11-16T23:59:00+05:30",
+    "no_distill": false,
+    "skip_tflite": false,
+    "no_update_config": false,
+    "seeds": [
+      42,
+      43
+    ],
+    "mix_prob": 0.6,
+    "dark_dir": "data/cache_dark",
+    "p_dark": 0.3,
+    "gentle_qat": true,
+    "quick": false,
+    "export_only": true,
+    "subset": 0,
+    "threads": 0
+  },
+  "vocab_proxy": true,
+  "ablation": {
+    "7ch": {
+      "val_top1": 0.35014836795252224,
+      "val_top5": 0.6439169139465876
+    },
+    "6ch": {
+      "val_top1": 0.32344213649851633,
+      "val_top5": 0.6083086053412463
+    },
+    "chosen": 7
+  },
+  "num_channels": 7,
+  "distillation_skipped": false,
+  "teacher_params": 4759538,
+  "teacher": {
+    "val_top1": 0.5786350148367952,
+    "val_top5": 0.7685459940652819,
+    "params": 4759538
+  },
+  "student_baseline": {
+    "val_top1": 0.4688427299703264,
+    "val_top5": 0.744807121661721
+  },
+  "student_distilled": {
+    "val_top1": 0.49258160237388726,
+    "val_top5": 0.7626112759643917
+  },
+  "promoted_student": "distilled",
+  "student_params": 73602,
+  "student_fp32_val": {
+    "top1": 0.49258160237388726,
+    "top5": 0.7626112759643917,
+    "n": 337
+  },
+  "qat": {
+    "epochs": 15,
+    "augmented": true,
+    "val_top1_before": 0.49258160237388726,
+    "val_top1_after": 0.599406528189911,
+    "robust_val_top1_before": 0.33827893175074186,
+    "robust_val_top1_after": 0.3916913946587537,
+    "weights_used_for_export": "qat"
+  },
+  "calibration": {
+    "source": "real training clips (unaugmented)",
+    "samples": 200
+  },
+  "export": {
+    "onnx_int8_mb": 0.128142,
+    "fp32_val_top1": 0.599406528189911,
+    "int8_onnx_val_top1": 0.5964391691394659,
+    "int8_onnx_val_top5": 0.8635014836795252,
+    "int8_top1_drop_pts": 0.29673590504450953,
+    "gate_drop_le_1pt": true,
+    "onnx_vs_fp32": {
+      "cosine_mean": 0.9969152808189392,
+      "cosine_min": 0.9872551560401917,
+      "cosine_centered_mean": 0.9772934913635254,
+      "max_logit_drift": 4.380936145782471,
+      "max_prob_drift": 0.5975322723388672,
+      "top1_agreement": 0.921875,
+      "n": 64
+    },
+    "int8_onnx_robust_val_top1": 0.3916913946587537,
+    "tflite": {
+      "cosine_mean": 0.9976667165756226,
+      "cosine_min": 0.9918973445892334,
+      "cosine_centered_mean": 0.984168529510498,
+      "max_logit_drift": 3.2823901176452637,
+      "max_prob_drift": 0.49240362644195557,
+      "top1_agreement": 0.859375,
+      "n": 64,
+      "val_top1_int8_tflite": 0.5964391691394659,
+      "val_top1_fp32": 0.599406528189911,
+      "val_n": 337,
+      "size_mb": 0.129,
+      "tf_float_vs_torch_max_abs": 5.7220458984375e-06,
+      "input_layout": "NHWC (1,64,53,C)",
+      "input_dtype": "float32"
+    },
+    "onnx_requant": {
+      "method": "percentile",
+      "percentile": 99.999,
+      "calib_clips": 600,
+      "excluded_nodes": [],
+      "val_top1_fp32": 0.599406528189911,
+      "val_top1_int8_onnx": 0.5964391691394659,
+      "drop_pts": 0.29673590504450953,
+      "gate_drop_le_1pt": true,
+      "size_mb": 0.128142,
+      "size_lt_0_5_mb": true,
+      "note": "hyper-parameters were chosen on the validation split; treat the pass as +-1 pt noise"
+    }
+  },
+  "elapsed_s": 652.0495774745941,
+  "export_only_rerun": true
+}

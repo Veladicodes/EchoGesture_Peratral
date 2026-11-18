@@ -1,0 +1,7 @@
+metric,target,measured,unit,device,runtime,pass
+top1_accuracy,70,61.63,%,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU,False
+latency_p95,50,40.94,ms,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy) | per-step streaming, k=3",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU,True
+model_size,20,0.1290,MB,file size (larger of onnx/tflite),INT8 ONNX + TFLite,True
+accuracy_drop_robustness,5,25.97,pts,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU,False
+avg_power,500,2897,mW,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy) | CPU TDP x util proxy (45 W TDP assumed x 6.4% process CPU util); laptop CPU, NOT a phone power number","process CPU util x vendor TDP over the 10-min streaming loop (proxy, not a meter)",False
+thermal_drift_10min,20,-0.83,%,"AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | Windows 10 (laptop CPU, proxy)",ONNX Runtime 1.27.0 CPU INT8 (1 thread) + MediaPipe Tasks CPU | continuous streaming loop,True

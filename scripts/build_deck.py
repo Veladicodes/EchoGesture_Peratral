@@ -80,12 +80,26 @@ def box(slide, x, y, w, h, fill=PANEL, line=None, shape=MSO_SHAPE.ROUNDED_RECTAN
     return s
 
 
+def footer(s, n):
+    txt(s, 0.6, 7.05, 9, 0.3, "EchoGesture  ·  Team Peratral, VIT Vellore  ·  Samsung XR Hackathon 2026  ·  Track 02", 9, MUTED)
+    txt(s, 11.9, 7.05, 0.85, 0.3, "%02d / 09" % n, 9, MUTED, False, PP_ALIGN.RIGHT)
+
+
+def chip(s, x, y, w, big, small, color=None):
+    box(s, x, y, w, 1.15, PANEL, RGBColor(0x2A, 0x33, 0x3D))
+    txt(s, x + 0.2, y + 0.08, w - 0.4, 0.6, big, 26, color or ACCENT, True)
+    txt(s, x + 0.2, y + 0.68, w - 0.4, 0.45, small, 11, MUTED)
+
+
 def new_slide(prs, title, kicker):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     s.background.fill.solid()
     s.background.fill.fore_color.rgb = BG
-    txt(s, 0.6, 0.35, 12, 0.35, kicker.upper(), 12, ACCENT, True)
+    num = len(prs.slides._sldIdLst)
+    box(s, 0.6, 0.44, 0.13, 0.13, ACCENT, shape=MSO_SHAPE.OVAL)
+    txt(s, 0.82, 0.33, 11, 0.35, "%02d   %s" % (num, kicker.upper()), 12, ACCENT, True)
     txt(s, 0.6, 0.65, 12.1, 0.9, title, 28, INK, True)
+    footer(s, num)
     return s
 
 
@@ -136,11 +150,20 @@ def build(d: dict) -> Path:
     s = prs.slides.add_slide(prs.slide_layouts[6])
     s.background.fill.solid()
     s.background.fill.fore_color.rgb = BG
-    box(s, 0, 0, 0.18, 7.5, ACCENT, shape=MSO_SHAPE.RECTANGLE)
-    txt(s, 0.9, 1.1, 11.5, 0.4, "TRACK 02: ECHOGESTURE  |  SIGN LANGUAGE PREDICTION ON EDGE DEVICES", 14, ACCENT, True)
-    txt(s, 0.9, 1.8, 11.5, 2.2, "EchoGesture: Air-Gapped On-Device Sign Language Recognition via Correctness-Masked Distillation", 38, INK, True)
-    txt(s, 0.9, 4.6, 11.5, 0.5, "Team Peratral  |  VITVellore (Vellore Institute of Technology, Vellore)", 22, INK)
-    txt(s, 0.9, 5.2, 11.5, 0.5, "Adithya A and team members  |  Samsung XR Hackathon 2026", 16, MUTED)
+    phone_lo = min(arm1["avg_us"], arm2["avg_us"]) / 1000
+    phone_hi = max(arm1["avg_us"], arm2["avg_us"]) / 1000
+    box(s, 0.6, 0.72, 0.16, 0.16, ACCENT, shape=MSO_SHAPE.OVAL)
+    txt(s, 0.85, 0.6, 11.5, 0.4, "TRACK 02: ECHOGESTURE  ·  SIGN LANGUAGE PREDICTION ON EDGE DEVICES", 14, ACCENT, True)
+    txt(s, 0.6, 1.35, 12.1, 0.9, "EchoGesture", 60, INK, True)
+    txt(s, 0.6, 2.4, 11.8, 1.3, "Air-gapped, on-device sign language recognition via correctness-masked distillation", 28, INK)
+    cw = 2.85
+    for i, (big, small) in enumerate([("%.3f MB" % size_mb, "INT8 model (%.0fx under the 20 MB limit)" % (20 / size_mb)),
+                                      ("%.2f ms" % lat, "streaming p95, laptop CPU (<= 50 ms)"),
+                                      ("%.1f-%.1f ms" % (phone_lo, phone_hi), "model-only, Motorola Edge 60 Pro"),
+                                      ("0 sockets", "no network code in src/ (tested)")]):
+        chip(s, 0.6 + i * (cw + 0.233), 4.15, cw, big, small)
+    txt(s, 0.6, 5.85, 12, 0.5, "Team Peratral  ·  VITVellore (Vellore Institute of Technology, Vellore)", 20, INK, True)
+    txt(s, 0.6, 6.35, 12, 0.5, "Adithya A (B.Tech IT, VIT Vellore)  ·  Tharun Sankar  ·  Samsung XR Hackathon 2026", 15, MUTED)
 
     # 2 Problem
     s = new_slide(prs, "Conversation needs speed and privacy, and cloud signing gives neither", "The problem")
@@ -200,8 +223,12 @@ def build(d: dict) -> Path:
             ["thermal_drift_10min", "<= 20 %", "%.2f %%" % th, pm("thermal_drift_10min")]]
     cols = [[None, None, None, ACCENT if b[3] == "PASS" else BAD] for b in body]
     table(s, 0.6, 1.7, 7.4, [3.0, 1.1, 2.6, 0.7], ["metric", "target", "measured", "pass"], body, 12, 0.5, cols)
-    txt(s, 0.6, 5.35, 7.4, 1.6, ["Device: AMD Ryzen laptop CPU (proxy), ONNX Runtime INT8 + MediaPipe CPU. Power is a CPU-utilisation x TDP estimate, not a meter reading.",
-                                 "Top-1 is below the 70 %% target: ~14 train clips per class on a sparse 16-frame archive. Vocabulary = %d (proxy, not Samsung's list)." % n_vocab], 11, MUTED)
+    hl = box(s, 0.6, 5.32, 7.4, 0.72, RGBColor(0x0B, 0x2A, 0x22), ACCENT)
+    txt(s, 0.75, 5.36, 7.1, 0.66, "%.3f MB INT8 (%.0fx under limit)  ·  %.2f ms streaming p95  ·  %.1f-%.1f ms on Motorola Edge 60 Pro (%s)  ·  %.1f %% Top-5 (%d classes)" %
+        (size_mb, 20 / size_mb, lat, min(arm1["avg_us"], arm2["avg_us"]) / 1000, max(arm1["avg_us"], arm2["avg_us"]) / 1000, ident["ro.soc.model"], top5, n_vocab),
+        13, ACCENT, True, PP_ALIGN.LEFT, MSO_ANCHOR.MIDDLE)
+    txt(s, 0.6, 6.12, 7.4, 0.9, ["Device: AMD Ryzen laptop CPU (proxy), ONNX Runtime INT8 + MediaPipe CPU. Power is a CPU-utilisation x TDP estimate, not a meter reading.",
+                                 "Top-1 is below the 70 %% target: ~14 train clips per class on a sparse 16-frame archive. Vocabulary = %d (proxy, not Samsung's list)." % n_vocab], 10, MUTED)
     txt(s, 8.4, 1.7, 4.5, 0.4, "Latency waterfall, keyframe step p95 (ms)", 14, ACCENT, True)
     parts = [("MediaPipe landmarks", wf["landmarks_hand_pose"]), ("Features", wf["features"]), ("INT8 student", wf["int8_model_only"]), ("Post-process", wf["postprocess"])]
     scale = 4.2 / 50.0
@@ -227,28 +254,28 @@ def build(d: dict) -> Path:
               (100 * mm_i8, 100 * mm_fp, 100 * ts["export"]["int8_onnx_val_top1"], 100 * ts["export"]["fp32_val_top1"], ts["export"]["int8_top1_drop_pts"])),
              ("Dual-condition word boundary", "Low hand speed AND wrists below chest level for 5 frames triggers a smooth 0.3 s fade-out reset, so signs do not bleed into each other.")]
     for i, (h, b) in enumerate(cards):
-        x, y = 0.6 + (i % 2) * 6.2, 1.8 + (i // 2) * 2.55
+        x, y = 0.6 + (i % 2) * 6.2, 1.75 + (i // 2) * 2.45
         box(s, x, y, 5.95, 2.3)
         txt(s, x + 0.25, y + 0.15, 5.5, 0.5, h, 19, ACCENT, True)
         txt(s, x + 0.25, y + 0.75, 5.5, 1.5, b, 14)
-    txt(s, 0.6, 6.95, 12, 0.4, "Trade-off we accept: a small skeleton model gives up raw accuracy versus a cloud video model, in exchange for privacy, speed and size.", 12, MUTED)
+    txt(s, 0.6, 6.6, 12, 0.4, "Trade-off we accept: a small skeleton model gives up raw accuracy versus a cloud video model, in exchange for privacy, speed and size.", 12, MUTED)
 
     # 7 Demo & local setup
     s = new_slide(prs, "Demo and local setup: three commands, no network", "Demo and local setup")
-    shot = OUT / "hud_smoke.png"
+    shot = OUT / "hud_live.png"
     if shot.is_file():
         s.shapes.add_picture(str(shot), Inches(0.6), Inches(1.75), height=Inches(3.0))
-    txt(s, 0.6, 4.78, 5.0, 0.5, "HUD (headless render of the real draw code on a test clip). Live capture with Wi-Fi off to be added.", 10, MUTED)
+    txt(s, 0.6, 4.78, 4.8, 0.55, "Live XR HUD on a held-out test stream (k=3, Top-5 led by the true gloss NO). Network counter is system-wide; our src/ opens no sockets.", 10, MUTED)
     code = ["pip install -r requirements.txt", "pytest tests -q", "python scripts/verify_submission.py"]
     box(s, 5.6, 1.75, 7.1, 1.25, CODE_BG, MUTED)
     txt(s, 5.8, 1.82, 6.8, 1.2, ["$ " + c for c in code], 13, ACCENT)
     txt(s, 5.6, 3.1, 7.1, 0.3, "predict(video_path) returns exactly 5 keys:", 13, INK, True)
     box(s, 5.6, 3.45, 7.1, 1.55, CODE_BG, MUTED)
     txt(s, 5.8, 3.5, 6.8, 1.5, ['{"clip_id": "test_0412",', ' "prediction": "<UPPERCASE_GLOSS>",', ' "top5": ["W1","W2","W3","W4","W5"],', ' "confidence": 0.85, "latency_ms": 24.1}'], 12, INK)
-    dk_txt = ["Docker run (network disabled): see outputs/docker_verify.txt"] if not d["docker"] else d["docker"].strip().splitlines()[-4:]
+    dk_txt = ["Docker run (network disabled): see outputs/docker_verify.txt"] if not d["docker"] else [ln.strip() for ln in d["docker"].strip().splitlines() if re.search(r"\d+ passed", ln)][-1:]
     txt(s, 0.6, 5.4, 12, 0.3, "Air-gapped container check", 13, ACCENT, True)
-    box(s, 0.6, 5.75, 12.1, 1.3, CODE_BG, MUTED)
-    txt(s, 0.8, 5.8, 11.8, 1.2, ["docker run --rm --network none echogesture:airgapped pytest tests -q"] + dk_txt, 11, INK)
+    box(s, 0.6, 5.75, 12.1, 1.0, CODE_BG, MUTED)
+    txt(s, 0.8, 5.85, 11.8, 0.9,["docker run --rm --network none echogesture:airgapped pytest tests -q"] + dk_txt, 11, INK)
 
     # 8 Brownie
     s = new_slide(prs, "Brownie: real phone silicon, ablation history and robustness breakdown", "Brownie slides")
@@ -272,13 +299,15 @@ def build(d: dict) -> Path:
     txt(s, 7.0, 5.95, 5.8, 1.2, ["Low light costs most, and mostly because MediaPipe loses landmarks in dark frames. Coordinate noise is the model's own weak spot."], 11, MUTED)
 
     # 9 Thank you
-    s = new_slide(prs, "Thank you", "Team Peratral | VITVellore")
+    s = new_slide(prs, "", "Team Peratral | VITVellore")
+    txt(s, 0.6, 0.85, 12, 1.1, "Thank you", 54, INK, True)
     txt(s, 0.6, 2.0, 12, 0.5, "Code, weights and results", 16, MUTED)
     txt(s, 0.6, 2.45, 12, 0.6, REPO_URL, 26, ACCENT, True)
     txt(s, 0.6, 3.5, 12, 0.5, "Demo video (2:30-2:50)", 16, MUTED)
-    txt(s, 0.6, 3.95, 12, 0.6, "[demo video link: add after upload]", 22, WARN, True)
+    txt(s, 0.6, 3.95, 12, 0.6, "<PASTE_DEMO_VIDEO_URL_HERE>", 22, WARN, True)
     txt(s, 0.6, 5.0, 12, 0.5, "Contact", 16, MUTED)
-    txt(s, 0.6, 5.45, 12, 1.0, ["Team Peratral, VITVellore (Vellore Institute of Technology, Vellore)", "[team contact details: add before submitting]"], 18)
+    txt(s, 0.6, 5.45, 12, 1.0, ["Team Peratral: Adithya A, Tharun Sankar  ·  VITVellore (Vellore Institute of Technology, Vellore)",
+                                 "Adithya A  ·  adithya.am05@gmail.com  ·  +91 94870 38353  ·  VIT Vellore"], 18)
 
     pptx = ROOT / (NAME + ".pptx")
     prs.save(pptx)

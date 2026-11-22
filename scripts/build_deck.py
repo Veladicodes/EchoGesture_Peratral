@@ -307,7 +307,8 @@ def build(d: dict) -> Path:
     txt(s, 0.6, 3.95, 12, 0.6, "<PASTE_DEMO_VIDEO_URL_HERE>", 22, WARN, True)
     txt(s, 0.6, 5.0, 12, 0.5, "Contact", 16, MUTED)
     txt(s, 0.6, 5.45, 12, 1.0, ["Team Peratral: Adithya A, Tharun Sankar  ·  VITVellore (Vellore Institute of Technology, Vellore)",
-                                 "Adithya A  ·  adithya.am05@gmail.com  ·  +91 94870 38353  ·  VIT Vellore"], 18)
+                                 "Adithya A  ·  adithya.am05@gmail.com  ·  +91 94870 38353  ·  VIT Vellore",
+                                 "Tharun Sankar  ·  tharunsankar.my2023@vitstudent.ac.in  ·  +91 63833 98396  ·  VIT Vellore"], 18)
 
     pptx = ROOT / (NAME + ".pptx")
     prs.save(pptx)

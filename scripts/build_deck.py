@@ -303,10 +303,8 @@ def build(d: dict) -> Path:
     txt(s, 0.6, 0.85, 12, 1.1, "Thank you", 54, INK, True)
     txt(s, 0.6, 2.0, 12, 0.5, "Code, weights and results", 16, MUTED)
     txt(s, 0.6, 2.45, 12, 0.6, REPO_URL, 26, ACCENT, True)
-    txt(s, 0.6, 3.5, 12, 0.5, "Demo video (2:30-2:50)", 16, MUTED)
-    txt(s, 0.6, 3.95, 12, 0.6, "<PASTE_DEMO_VIDEO_URL_HERE>", 22, WARN, True)
-    txt(s, 0.6, 5.0, 12, 0.5, "Contact", 16, MUTED)
-    txt(s, 0.6, 5.45, 12, 1.0, ["Team Peratral: Adithya A, Tharun Sankar  ·  VITVellore (Vellore Institute of Technology, Vellore)",
+    txt(s, 0.6, 3.6, 12, 0.5, "Contact", 16, MUTED)
+    txt(s, 0.6, 4.05, 12, 1.6, ["Team Peratral: Adithya A, Tharun Sankar  ·  VITVellore (Vellore Institute of Technology, Vellore)",
                                  "Adithya A  ·  adithya.am05@gmail.com  ·  +91 94870 38353  ·  VIT Vellore",
                                  "Tharun Sankar  ·  tharunsankar.my2023@vitstudent.ac.in  ·  +91 63833 98396  ·  VIT Vellore"], 18)
 

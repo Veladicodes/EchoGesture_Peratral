@@ -379,7 +379,7 @@ class HudRenderer:
 # the live loop
 # --------------------------------------------------------------------------- #
 def open_source(source: str, loop: bool = False):
-    """-> (frame iterator, mirrored). Camera index "0" is mirrored (selfie view = what the model expects)."""
+    """-> (frame iterator, mirror_display). Camera sources are shown mirrored (selfie view); the model is fed the raw frame."""
     import cv2
 
     if source.isdigit():
@@ -445,8 +445,11 @@ def run(a: argparse.Namespace) -> int:
     fps_ema, n = None, 0
     print("[hud] headless run." if a.headless else "[hud] running. Press q to quit.", flush=True)
     for raw in frames:
-        frame = cv2.flip(raw, 1) if mirrored else raw
-        out, ms = sp.step(frame, infer=(sp.idx % STRIDE == 0) and len(sp.ring) >= MIN_WINDOW)
+        # The MODEL always sees the raw, un-flipped camera frame (that is how it was trained: signers facing the
+        # camera). Flipping it made right-hand signs land in the left-hand slots (86-clip test: 59.3% -> 19.8% top-1).
+        # Only the picture shown to the user is mirrored (selfie view).
+        frame = cv2.flip(raw, 1) if mirrored else raw      # display copy
+        out, ms = sp.step(raw, infer=(sp.idx % STRIDE == 0) and len(sp.ring) >= MIN_WINDOW)
         step_ms.append(ms)
         now = time.perf_counter()
         dt, t_prev = now - t_prev, now
